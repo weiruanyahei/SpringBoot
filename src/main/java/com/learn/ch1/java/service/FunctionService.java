@@ -1,6 +1,4 @@
-package com.java.demo.service;
-
-import org.springframework.stereotype.Service;
+package com.learn.ch1.java.service;
 
 /**
  * Created by ldy on 2017/3/9.

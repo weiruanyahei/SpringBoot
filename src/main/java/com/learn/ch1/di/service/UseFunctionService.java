@@ -1,4 +1,4 @@
-package com.di.demo.service;
+package com.learn.ch1.di.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

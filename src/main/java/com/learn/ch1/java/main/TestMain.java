@@ -1,7 +1,7 @@
-package com.di.demo.main;
+package com.learn.ch1.java.main;
 
-import com.di.demo.config.DIConfig;
-import com.di.demo.service.UseFunctionService;
+import com.learn.ch1.java.config.JavaConfig;
+import com.learn.ch1.java.service.UseFunctionService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -9,9 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class TestMain {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DIConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
         UseFunctionService functionService = context.getBean(UseFunctionService.class);
-        functionService.sayHello("成功啦？");
+        functionService.sayHello("JAVA Config.");
         context.close();
     }
 }

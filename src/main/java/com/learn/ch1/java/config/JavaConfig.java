@@ -1,9 +1,8 @@
-package com.java.demo.config;
+package com.learn.ch1.java.config;
 
-import com.java.demo.service.FunctionService;
-import com.java.demo.service.UseFunctionService;
+import com.learn.ch1.java.service.FunctionService;
+import com.learn.ch1.java.service.UseFunctionService;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
