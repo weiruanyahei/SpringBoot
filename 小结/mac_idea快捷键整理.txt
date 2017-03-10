@@ -1,0 +1,23 @@
+文件编辑：
+⌘ Command + Shift + U   代码转换为大写或者小写
+⌘ Command + O           选择可重写的方法
+⌘ Command + option + ←/→   返回/前进至上次浏览的位置
+shift + F6   文件重命名
+control + n 生成代码(如get,set方法,构造函数等)
+option + shift + ↑/↓   将当前代码块向上或向下交换位置
+
+
+control + j             查看JAVADOC
+
+搜索类：
+control + shift + f    全局搜索，包含搜索文本的文件
+control + h            查看类继承结构
+command + n            查找类
+command+Shift+N        查找文件
+
+格式及优化类：
+command + option + L  格式化代码
+command + option + O 优化导入的类和包
+
+谷歌调试工具：
+command + option + j
