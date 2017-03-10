@@ -43,12 +43,12 @@ public class ELConfig {
     public void outPut() throws Exception {
         System.out.println("normal:"+normal);
         System.out.println("otherMsg:"+otherMsg);
-        System.out.println("testFile:"+ IOUtils.toString(new FileInputStream(testFile)));
+        System.out.println("testFile:"+ IOUtils.toString(new FileInputStream(testFile),"utf8"));
         System.out.println("osArch:"+osArch);
         System.out.println("osName:"+osName);
         System.out.println("osVersion:"+osVersion);
         System.out.println("learnPhase:"+learnPhase);
-        System.out.println("resource:"+IOUtils.toString(resource.getInputStream()));
+        System.out.println("resource:"+IOUtils.toString(resource.getInputStream(),"utf8"));
         System.out.println("randomNumber:"+randomNumber);
         System.out.println("environment:"+environment.getProperty("learn.currPage"));
     }
