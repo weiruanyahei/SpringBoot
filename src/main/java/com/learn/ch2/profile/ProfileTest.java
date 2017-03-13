@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class ProfileTest {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(ProfileConfig.class);
+        context.register(ProfileConfig.class);//必须后边注册，放入构造器将抛出异常。
         context.getEnvironment().setActiveProfiles("prod");
         context.refresh();
         Demo demo = context.getBean(Demo.class);
