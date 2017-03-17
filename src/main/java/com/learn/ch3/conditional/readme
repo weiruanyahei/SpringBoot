@@ -1,0 +1,5 @@
+Spring4提供了一个基于条件的Bean创建的替代方案（通过活动的profile，可以获得不同的Bean）；即使用@Conditional注解。
+根据特定条件来控制Bean的创建行为，利用这一特性可以进行一些自动的配置。
+
+例子中：通过实现Condition接口，并重写其matches方法来构造判断条件。若在Windows系统下运行程序，则输出列表命令为dir；
+若在Linux操作系统下运行程序，则输出列表命令为ls。
