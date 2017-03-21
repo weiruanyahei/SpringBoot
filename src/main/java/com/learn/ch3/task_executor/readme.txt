@@ -3,7 +3,7 @@ TaskExecutor.而实际开发中任务一般是异步的，因此，需要在配�
 执行的Bean的方法中使用@Async注解来声明其是一个异步任务。
 
 特别注意：目前线程池并不会随spring容器的关闭而shutdown。
-When more control is desired, a @Configuration class may implement SchedulingConfigurer.
+When more contr】ol is desired, a @Configuration class may implement SchedulingConfigurer.
 This allows access to the underlying ScheduledTaskRegistrar instance.
  For example, the following example demonstrates how to customize the Executor used to execute scheduled
  tasks:
