@@ -1,9 +1,7 @@
 package com.learn.ch3.task_executor;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.core.task.support.TaskExecutorAdapter;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -28,14 +26,14 @@ public class TaskExecutorConfig implements AsyncConfigurer {
         return null;
     }
 
-    @Bean(destroyMethod = "shutdown")
+    @Bean//(destroyMethod = "shutdown",initMethod = "initialize")
+    @Lazy
     public Executor makeExecutor(){
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5);
         taskExecutor.setMaxPoolSize(10);
         taskExecutor.setQueueCapacity(25);
         taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
-        taskExecutor.initialize();
         return taskExecutor;
     }
 }
