@@ -17,7 +17,7 @@
     <!--将该包下的类的日志级别设置为DEBUG，我们开发Spring MVC经常出现与参数类型相关的4XX错误，
     设置此项将会看到更详细的错误信息-->
     <logger name="org.springframework.web" level="DEBUG" />
-    <root level="info">
+    <root level="DEBUG">
         <appender-ref ref="console"/>
     </root>
 </configuration>
