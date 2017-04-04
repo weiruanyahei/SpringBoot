@@ -16,8 +16,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.ws.rs.core.MediaType;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -65,10 +68,27 @@ public class TestControllerIntegrationTests {
                 .andExpect(content().string(demoService.sayHello("kobe")));//预期返回值的内容
     }
 
+    /**
+     * 测试案例能保证功能没有问题，但其结果表现与真实的生产环境有可能不一致
+     * @throws Exception
+     */
     @Test
     public void testUpload() throws Exception {
         MockMultipartFile multipartFile = new MockMultipartFile("file","original","multipart/form-data","任意文件内容".getBytes());
         this.mockMvc.perform(fileUpload("/upload").file(multipartFile))
                 .andExpect(content().string("ok"));
+    }
+
+    /**
+     * 测试案例能保证功能没有问题，但其结果表现与真实的生产环境有可能不一致
+     * @throws Exception
+     */
+    @Test
+    public void testConverter() throws Exception {
+        this.mockMvc.perform(post("/converter")
+                .contentType("application/x-learn")//此处很重要啊。不写时按默认处理：此时将抛出错误：Content type 'application/octet-stream' not supported
+                .content("1-weiruanyahei"))
+                //.andExpect(content().contentType("application/x-learn"))
+                .andExpect(content().string("Hello : 1-weiruanyahei"));
     }
 }
