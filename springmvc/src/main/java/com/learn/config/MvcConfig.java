@@ -4,6 +4,7 @@ import com.learn.web.interceptor.WasteTimePerRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -18,6 +19,13 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc//开启一些默认配置，如一些ViewResolver或者MessageConverter等;同时，若不包含此注解时，重写WebMvcConfigurerAdapter方法无效
 @ComponentScan("com.learn")
 public class MvcConfig extends WebMvcConfigurerAdapter{
+    @Bean("multipartResolver")
+    public MultipartResolver multipartResolver(){
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(1000000);
+        return multipartResolver;
+    }
+
     @Bean
     public InternalResourceViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -30,12 +38,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     public WasteTimePerRequestInterceptor wasteTimePerRequestInterceptor(){
         return new WasteTimePerRequestInterceptor();
     }
-    @Bean
-    public MultipartResolver multipartResolver(){
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(1000000);
-        return multipartResolver;
-    }
+
+
 
     /**
      * 静态资源映射
@@ -76,4 +80,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     public void configurePathMatch(PathMatchConfigurer configurer) {
         configurer.setUseSuffixPatternMatch(Boolean.FALSE);
     }
+
+
 }

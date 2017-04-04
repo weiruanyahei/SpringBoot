@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -15,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -61,5 +63,12 @@ public class TestControllerIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/plain;charset=UTF-8"))//预期返回值的媒体类型
                 .andExpect(content().string(demoService.sayHello("kobe")));//预期返回值的内容
+    }
+
+    @Test
+    public void testUpload() throws Exception {
+        MockMultipartFile multipartFile = new MockMultipartFile("file","original","multipart/form-data","任意文件内容".getBytes());
+        this.mockMvc.perform(fileUpload("/upload").file(multipartFile))
+                .andExpect(content().string("ok"));
     }
 }
